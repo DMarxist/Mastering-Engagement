@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mastering Engagement in Care Home Quality Improvement</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/theme/white.min.css">
+
+<style>
+    body {
+        font-family: 'Inter', sans-serif;
+        background-color: #F8FAFC; 
+    }
+    .reveal .slides section {
+        text-align: left; /* Override default center alignment for slides */
+    }
+    .reveal .slides h1, 
+    .reveal .slides h2, 
+    .reveal .slides h3, 
+    .reveal .slides h4 {
+        text-align: center; /* Center headings within slides */
+        color: #0081A7;
+    }
+    .reveal .slides p,
+    .reveal .slides li {
+        font-size: 0.8em; /* Adjust base paragraph font size for slides */
+        color: #374151; /* Tailwind gray-700 */
+    }
+    .reveal .slides .container {
+        margin: 0 auto;
+        padding: 20px; /* Add some padding within slides */
+        width: 90%;
+        max-width: 1000px; /* Control max width of content on slide, relative to slide's design resolution */
+    }
+
+    .chart-container {
+        position: relative;
+        width: 100%;
+        max-width: 500px; 
+        margin-left: auto;
+        margin-right: auto;
+        height: 300px; 
+        max-height: 350px;
+    }
+    
+    .word-cloud span {
+        display: inline-block;
+        padding: 0.25rem 0.5rem;
+    }
+
+    /* Tailwind overrides for Reveal.js context if needed */
+    .reveal .slides .bg-\[\#FDFCDC\] { background-color: #FDFCDC; }
+    .reveal .slides .text-\[\#0081A7\] { color: #0081A7; }
+    .reveal .slides .text-\[\#00AFB9\] { color: #00AFB9; }
+    .reveal .slides .text-\[\#F07167\] { color: #F07167; }
+    .reveal .slides .text-\[\#FED9B7\] { color: #FED9B7; }
+
+    .flow-step {
+        text-align: center;
+        padding: 1rem; 
+        margin-bottom: 0.5rem; 
+    }
+    .flow-step h4 {
+        margin-top: 0.5rem;
+    }
+
+    .impact-effort-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        border: 2px solid #D1D5DB; 
+        border-radius: 0.5rem;
+        margin-top: 1rem;
+        position: relative; 
+    }
+    .impact-effort-grid > div {
+        padding: 1rem;
+    }
+    .impact-effort-grid .border-b-2 { border-bottom-width: 2px; }
+    .impact-effort-grid .border-r-2 { border-right-width: 2px; }
+    .impact-effort-grid .border-gray-300 { border-color: #D1D5DB; }
+
+    .impact-label {
+        position: absolute;
+        left: -2.5rem; 
+        top: 50%;
+        transform: translateY(-50%) rotate(-90deg);
+        font-weight: bold;
+        color: #6B7280; 
+    }
+    .effort-label {
+        position: absolute;
+        bottom: -2.5rem; 
+        left: 50%;
+        transform: translateX(-50%);
+        font-weight: bold;
+        color: #6B7280; 
+    }
+    .reveal .slides section[data-state="final-slide-centered-text"] {
+        text-align: center;
+    }
+    /* Align EBCD slide content to the top */
+    .reveal .slides section[data-state="ebcd-slide-align-top"] {
+        justify-content: flex-start; /* Override default vertical centering */
+    }
+    .reveal .slides section[data-state="ebcd-slide-align-top"] > .container > .bg-gray-100 {
+        margin-top: 5%; /* Add some space from the top of the slide */
+    }
+    /* Custom font sizes for EBCD slide text (approx 5% reduction) */
+    .ebcd-text-main {
+        font-size: 0.83rem !important; /* Approx 5% less than text-sm (0.875rem) */
+    }
+    .ebcd-text-step {
+        font-size: 0.71rem !important; /* Approx 5% less than text-xs (0.75rem) */
+    }
+
+</style>
+</head>
+<body class="text-gray-800">
+
+<div class="reveal">
+    <div class="slides">
+        <section data-transition="slide">
+            <div class="container mx-auto px-6 text-center py-10">
+                <h1 class="text-4xl md:text-5xl font-black text-[#0081A7]">Mastering Engagement in Care Home Quality Improvement</h1>
+                <p class="mt-6 text-xl text-[#00AFB9]">A Toolkit for Healthcare Staff</p>
+            </div>
+        </section>
+
+        <section id="imperative" data-transition="slide" data-background-color="#FDFCDC">
+            <div class="container">
+                <h2 class="text-3xl md:text-4xl">The Engagement Imperative</h2>
+                <p class="mt-4 text-lg">Genuine engagement is the cornerstone of successful and sustainable improvements in care quality, resident experience, and staff well-being.</p>
+
+                <div class="mt-8">
+                    <h3 class="text-xl font-bold">Defining Meaningful Engagement</h3>
+                    <p class="mt-2 text-sm">Engagement must be tailored to the distinct roles, needs, and capacities of each group, moving beyond token consultation to active, authentic participation.</p>
+                    <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+                        <div class="bg-white p-4 rounded-lg shadow-lg text-center">
+                            <span class="text-4xl">👥</span>
+                            <h4 class="mt-2 text-lg font-bold text-[#0081A7]">For Staff</h4>
+                            <p class="mt-1">Active contribution in identifying problems, co-designing solutions, and owning the improvement process.</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-lg text-center">
+                            <span class="text-4xl">👵</span>
+                            <h4 class="mt-2 text-lg font-bold text-[#0081A7]">For Residents</h4>
+                            <p class="mt-1">Ensuring their preferences, values, and "What Matters To You?" are central to all decisions impacting their lives.</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-lg text-center">
+                            <span class="text-4xl">👨‍👩‍👧</span>
+                            <h4 class="mt-2 text-lg font-bold text-[#0081A7]">For Families</h4>
+                            <p class="mt-1">Recognizing them as indispensable partners, leveraging their intimate knowledge and insights for holistic solutions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section data-background-color="#FDFCDC">
+            <div class="container">
+                <h3 class="text-xl font-bold">The Virtuous Cycle of Engagement</h3>
+                <p class="mt-2 text-sm">The benefits of a highly engaged QI process are interconnected, creating a positive feedback loop. This chart illustrates the relative focus required to achieve these interconnected benefits, emphasizing that better outcomes and sustainable solutions are the ultimate goal.</p>
+                <div class="chart-container mt-4 mx-auto">
+                    <canvas id="benefitsChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="leadership" data-transition="slide">
+            <div class="container">
+                <h2 class="text-3xl md:text-4xl">Cultivating Fertile Ground: Leadership & Culture</h2>
+                <p class="mt-4 text-lg">Effective engagement doesn't happen by chance. It requires strong, visible leadership and a culture of psychological safety where every voice is valued and learning is continuous.</p>
+            </div>
+        </section>
+
+        <section> 
+            <div class="container">
+                <div class="bg-gray-100 p-6 rounded-lg shadow-xl">
+                    <h3 class="text-xl font-bold text-[#0081A7] text-center">The Leader’s Blueprint for Championing Engagement</h3>
+                    <p class="mt-2 text-gray-600 text-center text-sm">Leaders are the architects of an engaged culture. This is an active, ongoing commitment, not a passive endorsement.</p>
+                    <div class="mt-6 flex flex-col md:flex-row items-stretch justify-center gap-1">
+                        <div class="flow-step bg-white rounded-md shadow p-1 flex-1"><span class="text-2xl">📢</span><h4 class="text-sm text-[#0081A7]">Articulate Vision</h4></div>
+                        <div class="flow-step bg-white rounded-md shadow p-1 flex-1"><span class="text-2xl">🤝</span><h4 class="text-sm text-[#0081A7]">Sponsor Actively</h4></div>
+                        <div class="flow-step bg-white rounded-md shadow p-1 flex-1"><span class="text-2xl">🛠️</span><h4 class="text-sm text-[#0081A7]">Provide Resources</h4></div>
+                        <div class="flow-step bg-white rounded-md shadow p-1 flex-1"><span class="text-2xl">💡</span><h4 class="text-sm text-[#0081A7]">Empower Staff</h4></div>
+                        <div class="flow-step bg-white rounded-md shadow p-1 flex-1"><span class="text-2xl">🎉</span><h4 class="text-sm text-[#0081A7]">Celebrate & Learn</h4></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="staff" data-transition="slide" data-background-color="#FDFCDC">
+            <div class="container">
+                <h2 class="text-3xl md:text-4xl">Empowering the Engine Room: Engaging Staff</h2>
+                <p class="mt-4 text-lg">Care home staff are the engine of QI. Engaging them means moving beyond compliance to fostering ownership, driven by building their confidence and competence.</p>
+            </div>
+        </section>
+
+        <section data-background-color="#FDFCDC"> 
+            <div class="container">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                    <div class="bg-white p-3 rounded-lg shadow-lg"> 
+                        <h3 class="text-xl font-bold text-[#0081A7] text-center">Building QI Competence</h3>
+                        <p class="mt-2 text-gray-600 text-center text-xs">A blend of training methods is needed to build confidence and skill. This illustrative chart shows how different learning approaches might contribute to the competence of various staff roles.</p> 
+                        <div class="chart-container mt-4 mx-auto h-[280px]">
+                            <canvas id="competenceChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-3 rounded-lg shadow-lg"> 
+                        <h3 class="text-xl font-bold text-[#0081A7] text-center">The QI Kick-start Huddle Board</h3>
+                        <p class="mt-2 text-gray-600 text-center text-xs">A simple, visual tool to make QI an accessible, daily practice. It helps teams track small tests of change and celebrate incremental progress.</p> 
+                        <div class="mt-4 border-4 border-[#00AFB9] rounded-lg p-2 grid grid-cols-2 gap-1 bg-gray-50 text-xs"> 
+                            <div class="bg-green-100 p-1 rounded shadow"><h4 class="font-semibold text-green-800 text-xs">✅ What's Working Well?</h4></div> 
+                            <div class="bg-yellow-100 p-1 rounded shadow"><h4 class="font-semibold text-yellow-800 text-xs">🤔 Pebbles in Our Shoes</h4></div> 
+                            <div class="bg-blue-100 p-1 rounded shadow col-span-2"><h4 class="font-semibold text-blue-800 text-xs">💡 Today's PDSA Focus</h4><p class="text-gray-700 mt-1 leading-tight text-xs"><b>Plan:</b> Test new handover sheet. <b>Do:</b> Use at 2pm. <b>Study:</b> Clearer info? <b>Act:</b> Discuss next huddle.</p></div> 
+                            <div class="bg-purple-100 p-1 rounded shadow"><h4 class="font-semibold text-purple-800 text-xs">📋 Action Items</h4></div> 
+                            <div class="bg-pink-100 p-1 rounded shadow"><h4 class="font-semibold text-pink-800 text-xs">🎉 Quick Wins!</h4></div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="residents" data-transition="slide">
+            <div class="container">
+                <h2 class="text-3xl md:text-4xl">The Heart of the Matter: Engaging Residents & Families</h2>
+                <p class="mt-4 text-lg">All QI efforts must be grounded in what genuinely matters to those receiving care. This means uncovering their core needs and actively involving them in co-designing solutions.</p>
+            </div>
+        </section>
+
+        <section> 
+            <div class="container">
+                <div class="grid grid-cols-1 gap-8 items-start"> 
+                    <div class="bg-gray-100 p-6 rounded-lg shadow-xl mx-auto max-w-2xl"> 
+                        <h3 class="text-xl font-bold text-[#0081A7] text-center">What Matters To You? (WMTY)</h3>
+                        <p class="mt-2 text-gray-600 text-center text-sm">WMTY conversations reveal the core themes that should guide all person-centred QI. This visual represents the common themes that emerge.</p>
+                        <div class="mt-4 p-3 rounded-lg bg-white shadow-inner word-cloud text-center">
+                            <span class="text-3xl font-bold text-[#F07167]">Dignity</span>
+                            <span class="text-xl font-semibold text-[#00AFB9]">Relationships</span>
+                            <span class="text-4xl font-extrabold text-[#0081A7]">Safety</span>
+                            <span class="text-2xl font-bold text-[#FED9B7]">Joy</span>
+                            <span class="text-xl font-semibold text-[#00AFB9]">Choice</span>
+                            <span class="text-3xl font-bold text-[#F07167]">Comfort</span>
+                            <span class="text-2xl font-bold text-[#0081A7]">Home</span>
+                            <span class="text-xl font-semibold text-[#FED9B7]">Respect</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section data-state="ebcd-slide-align-top"> 
+            <div class="container">
+                <div class="bg-gray-100 p-6 rounded-lg shadow-xl mx-auto max-w-2xl"> 
+                    <h3 class="text-xl font-bold text-[#0081A7] text-center">Experience-Based Co-Design (EBCD)</h3>
+                    <p class="mt-2 text-gray-600 text-center ebcd-text-main">EBCD is a powerful methodology for building solutions with residents, families, and staff, not for them.</p> 
+                    <div class="mt-4 flex flex-col items-center justify-center gap-3">
+                        <div class="text-center bg-white p-3 rounded-lg shadow-md w-full">
+                            <h4 class="text-lg font-bold text-[#0081A7]">1. Gather Experiences</h4>
+                            <p class="mt-1 text-gray-600 ebcd-text-step">Collect stories from staff, residents & families.</p> 
+                        </div>
+                        <div class="text-2xl text-[#00AFB9]">↓</div>
+                        <div class="text-center bg-white p-3 rounded-lg shadow-md w-full">
+                            <h4 class="text-lg font-bold text-[#0081A7]">2. Identify Priorities</h4>
+                            <p class="mt-1 text-gray-600 ebcd-text-step">Use feedback events to find shared themes.</p> 
+                        </div>
+                        <div class="text-2xl text-[#00AFB9]">↓</div>
+                        <div class="text-center bg-white p-3 rounded-lg shadow-md w-full">
+                            <h4 class="text-lg font-bold text-[#0081A7]">3. Joint Co-Design</h4>
+                            <p class="mt-1 text-gray-600 ebcd-text-step">Everyone collaborates to create and test solutions.</p> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="toolkit" data-transition="slide" data-background-color="#FDFCDC">
+            <div class="container">
+                <h2 class="text-3xl md:text-4xl">The Engagement Toolkit</h2>
+                <p class="mt-4 text-lg">A selection of practical methods to foster alignment, generate ideas, and prioritize efforts for maximum impact. Below is a visual representation of the Impact-Effort matrix, a key tool for strategic decision-making.</p>
+                <div class="mt-6 max-w-2xl mx-auto bg-white p-4 rounded-xl shadow-2xl">
+                    <div class="relative py-8 px-4">
+                        <div class="impact-effort-grid text-xs">
+                            <div class="bg-green-50 border-b-2 border-r-2 border-gray-300"><h3 class="font-bold text-green-800">🚀 Quick Wins</h3><p class="mt-1 text-green-700">(High Impact, Low Effort)</p><div class="mt-2 p-1 bg-yellow-200 rounded shadow-sm">New handover sheet</div></div>
+                            <div class="bg-blue-50 border-b-2 border-gray-300"><h3 class="font-bold text-blue-800">🏗️ Major Projects</h3><p class="mt-1 text-blue-700">(High Impact, High Effort)</p><div class="mt-2 p-1 bg-yellow-200 rounded shadow-sm">Full eMAR</div><div class="mt-1 p-1 bg-yellow-200 rounded shadow-sm">New Staff Training</div></div>
+                            <div class="bg-orange-50 border-r-2 border-gray-300"><h3 class="font-bold text-orange-800">🤔 Fill-Ins</h3><p class="mt-1 text-orange-700">(Low Impact, Low Effort)</p><div class="mt-2 p-1 bg-yellow-200 rounded shadow-sm">Update notice board</div></div>
+                            <div class="bg-red-50"><h3 class="font-bold text-red-800">🚫 Hard Slogs</h3><p class="mt-1 text-red-700">(Low Impact, High Effort)</p></div>
+                        </div>
+                        <div class="impact-label">Impact</div>
+                        <div class="effort-label">Effort</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sustainability" data-transition="slide">
+            <div class="container">
+                <h2 class="text-3xl md:text-4xl">Sustaining Engagement for Long-Term Success</h2>
+                <p class="mt-4 text-lg">Initial enthusiasm is not enough. Sustaining engagement requires continuous learning, robust feedback loops, and celebrating progress to maintain momentum over time.</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="bg-gray-100 p-6 rounded-lg shadow-xl max-w-3xl mx-auto">
+                    <h3 class="text-xl font-bold text-[#0081A7] text-center">The Trajectory of Engagement</h3>
+                    <p class="mt-2 text-gray-600 text-center text-sm">This conceptual chart illustrates how a team's engagement level can falter without deliberate strategies for sustainability, such as feedback and recognition, compared to a team where these elements are actively maintained.</p>
+                    <div class="chart-container mt-4 mx-auto h-[280px]">
+                        <canvas id="sustainabilityChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section data-transition="fade" data-state="final-slide-centered-text"> 
+            <div class="container mx-auto px-6 py-10"> 
+                <h2 class="text-3xl font-bold text-[#0081A7]">Weaving Engagement into the Fabric of Care</h2>
+                <p class="mt-6 max-w-3xl mx-auto text-lg text-gray-700">By moving beyond superficial participation to a dynamic ecosystem of genuine collaboration, we can create better outcomes for residents, a more rewarding environment for staff, and a resilient culture of continuous improvement.</p> 
+                <p class="mt-8 text-gray-500 text-sm">Thank you.</p>
+            </div>
+        </section>
+
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/plugin/notes/notes.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/plugin/markdown/markdown.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/plugin/highlight/highlight.min.js"></script>
+<script>
+    // Helper function to wrap long labels for charts
+    function wrapLabel(str, maxWidth) {
+        if (typeof str !== 'string' || str.length <= maxWidth) {
+            return str;
+        }
+        const words = str.split(' ');
+        const lines = [];
+        let currentLine = '';
+        for (const word of words) {
+            if ((currentLine + ' ' + word).trim().length > maxWidth && currentLine.length > 0) {
+                lines.push(currentLine);
+                currentLine = word;
+            } else {
+                currentLine = (currentLine + ' ' + word).trim();
+            }
+        }
+        if (currentLine.length > 0) {
+            lines.push(currentLine);
+        }
+        return lines;
+    }
+
+    // Helper function for chart tooltips with wrapped labels
+    const tooltipTitleCallback = function(tooltipItems) {
+        const item = tooltipItems[0];
+        if (!item || !item.chart || !item.chart.data || !item.chart.data.labels) return '';
+        let label = item.chart.data.labels[item.dataIndex];
+        if (Array.isArray(label)) {
+            return label.join(' ');
+        }
+        return label || '';
+    };
+
+    // Centralized chart color definitions
+    const chartColors = {
+        primary: '#0081A7',
+        secondary: '#00AFB9',
+        accent: '#FED9B7',
+        light: '#FDFCDC',
+        danger: '#F07167'
+    };
+    
+    // Function to initialize all charts
+    function initCharts() {
+        // Benefits Chart (Doughnut)
+        const benefitsCanvas = document.getElementById('benefitsChart');
+        if (benefitsCanvas && !Chart.getChart(benefitsCanvas)) { 
+            new Chart(benefitsCanvas.getContext('2d'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Improved Resident Outcomes', 'Sustainable Solutions', 'Increased Staff Retention', 'Enhanced Family Satisfaction', 'Regulatory Alignment'].map(label => wrapLabel(label, 16)),
+                    datasets: [{
+                        label: 'Focus of Benefits',
+                        data: [30, 25, 20, 15, 10],
+                        backgroundColor: [chartColors.primary, chartColors.secondary, chartColors.accent, chartColors.danger, '#a5dee5'],
+                        borderColor: '#FFFFFF',
+                        borderWidth: 2,
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '60%',
+                    plugins: {
+                        legend: { 
+                            position: 'bottom', 
+                            labels: { 
+                                font: { size: 9 }, 
+                                color: '#4B5563', 
+                                padding: 8, 
+                                boxWidth: 10 
+                            }
+                        },
+                        tooltip: { callbacks: { title: tooltipTitleCallback }}
+                    }
+                }
+            });
+        }
+
+        // Competence Chart (Stacked Bar)
+        const competenceCanvas = document.getElementById('competenceChart');
+        if (competenceCanvas && !Chart.getChart(competenceCanvas)) { 
+            new Chart(competenceCanvas.getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['Care Assistants', 'Nurses', 'Management'].map(label => wrapLabel(label, 16)),
+                    datasets: [
+                        { label: 'Formal Training', data: [20, 30, 40], backgroundColor: chartColors.primary },
+                        { label: 'Experiential Learning', data: [50, 45, 30], backgroundColor: chartColors.secondary },
+                        { label: 'Coaching & Mentorship', data: [30, 25, 30], backgroundColor: chartColors.accent },
+                    ]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    scales: {
+                        x: { stacked: true, grid: { display: false } },
+                        y: { stacked: true, beginAtZero: true, max: 100, ticks: { callback: function(value) {return value + "%"} }, grid: { color: '#E5E7EB' }}
+                    },
+                    plugins: { legend: { position: 'bottom', labels: { font: {size: 10}} }, tooltip: { callbacks: { title: tooltipTitleCallback }}}
+                }
+            });
+        }
+
+        // Sustainability Chart (Line)
+        const sustainabilityCanvas = document.getElementById('sustainabilityChart');
+        if (sustainabilityCanvas && !Chart.getChart(sustainabilityCanvas)) { 
+            new Chart(sustainabilityCanvas.getContext('2d'), {
+                type: 'line',
+                data: {
+                    labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+                    datasets: [
+                        { label: 'With Sustained Effort', data: [50, 65, 75, 85], borderColor: chartColors.primary, backgroundColor: 'rgba(0, 129, 167, 0.1)', fill: true, tension: 0.3 },
+                        { label: 'Without Sustained Effort', data: [50, 55, 45, 35], borderColor: chartColors.danger, backgroundColor: 'rgba(240, 113, 103, 0.1)', fill: true, tension: 0.3 }
+                    ]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    scales: { y: { beginAtZero: true, max: 100, ticks: { callback: function(value) {return value + "%"} }, title: { display: true, text: 'Team Engagement Score', font: {size: 10}} }},
+                    plugins: { legend: { position: 'bottom', labels: {font: {size: 10}} }, tooltip: { callbacks: { title: tooltipTitleCallback }, mode: 'index', intersect: false }}
+                }
+            });
+        }
+    }
+
+    // Initialize Reveal.js
+    Reveal.initialize({
+        history: false, 
+        hash: false,    
+        slideNumber: 'c/t', 
+        plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ],
+        // --- Scaling Configuration ---
+        width: 1280,  // Design width of your slides
+        height: 720, // Design height of your slides
+        center: true, // Center slides vertically
+        // --- End Scaling Configuration ---
+        margin: 0.04, // A little margin around the slides
+        dependencies: [
+            { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/plugin/zoom/zoom.min.js', async: true },
+        ]
+    });
+
+    // Event listener for when Reveal.js is ready
+    Reveal.on('ready', event => {
+        initCharts(); 
+    });
+
+    // Event listener for when a slide changes
+    Reveal.on('slidechanged', event => {
+        initCharts(); 
+    });
+
+    // Fallback initialization on window load
+    window.onload = () => {
+        if (Reveal.isReady()) {
+            initCharts();
+        }
+    };
+
+</script>
+</body>
+</html>
